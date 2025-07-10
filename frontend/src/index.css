@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+/* //Chat page design  */
+
+.str-chat__channel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(to bottom , #c9e8c9 ,#b7e7bb); */
+  background: rgb(174, 232, 245) !important;
+}
+.str-chat__main-panel{
+  width: 85vw !important;
+}
+.str-chat__channel-header{
+  background: #f4efce !important;
+}
+.str_chat__container{
+  max-width: 120px;
+  width: 100%;
+  height: 50% !important;
+  margin: 0 auto !important;
+  border-radius: 8px;
+  /* background: greenyellow; */
+  box-shadow:0 4px 2px rgba(0,0,0,0.05) ;
+  overflow: hidden;
+}
+
+.str-chat__list{
+  background-color: rgb(196, 238, 196) !important;
+  padding: 12px;
+}
+
+.str-chat__list-notification{
+  display: none;
+}
+
+.str-chat__message-input{
+  border: top 1px solid #ce7d7d !important; 
+}
