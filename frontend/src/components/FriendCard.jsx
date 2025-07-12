@@ -13,17 +13,17 @@ const FriendCard = ({friend}) => {
 
             <h3 className='font-semibold truncate'>{friend.fullname}</h3>
         </div>
-
+        
         {/* Actions  */}
         <div className='flex flex-wrap gap-1.5 mb-3'>
-            <span className='badge badge-secondary text-xs'>{GetLanguageFlag(friend.nativelanguage)}Native:{friend.nativelanguage}
+            <span className='badge badge-secondary text-xs'>{GetLanguageFlag(friend.nativelanguage)}Native: {friend.nativelanguage}
             </span>
             <span>
-                {GetLanguageFlag(friend.learninglanguage)}Learning:{friend.learninglanguage}
+                {GetLanguageFlag(friend.learninglanguage)}Learning: {friend.learninglanguage}
             </span>
         </div>
 
-        <Link to={`/chat/${friend._id}`} className="btn btn-outline w-full rounded-md">Message</Link>
+        <Link to={`/chat/${friend._id}`} className="btn btn-outline w-full rounded-full">Message</Link>
      </div>
    </div>
   )

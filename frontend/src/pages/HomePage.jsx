@@ -74,7 +74,7 @@ const HomePage = () => {
             </div>
           )
         }
-
+     {/* //Meet new learners section start  */}
         <section>
           <div className='mb-6 sm:mb-8'>
               <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4'>
@@ -121,13 +121,13 @@ const HomePage = () => {
                        {/* language with flag  */}
                        <div className='flex flex-wrap gap-1.5'>
                          <span className='badge badge-secondary'>
-                          {GetLanguageFlag(user.nativelanguage)}Native:{capitialize(user.nativelanguage)}
+                          {GetLanguageFlag(user.nativelanguage)}Native: {capitialize(user.nativelanguage)}
                          </span>
                          <span className='badge badge-outline'>
-                            {GetLanguageFlag(user.learninglanguage)}Learning:{capitialize(user.learninglanguage)}
+                            {GetLanguageFlag(user.learninglanguage)}Learning: {capitialize(user.learninglanguage)}
                          </span>
                        </div>
-
+                      {/* //user bio  */}
                        {user.bio && (
                          <p className='text-sm opacity-70'>
                            {user.bio}

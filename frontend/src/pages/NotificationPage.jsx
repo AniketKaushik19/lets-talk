@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { acceptFriendRequest } from '../libs/api'
 import {UserCheckIcon , BellIcon ,ClockIcon , MessageSquareIcon} from 'lucide-react'
 import NoNotificationsFound from '../components/NoNotificationsFound'
+import toast from 'react-hot-toast'
  const NotificationPage = () => {
   const queryClient =useQueryClient()
 
@@ -16,6 +17,7 @@ import NoNotificationsFound from '../components/NoNotificationsFound'
     onSuccess:()=>{
       queryClient.invalidateQueries({queryKey:["friendRequests"]})
       queryClient.invalidateQueries({queryKey:["friends"]})
+      toast.success("Added Successfully!!")
     }
   })
 
