@@ -4,7 +4,11 @@ import { acceptFriendRequest } from '../libs/api'
 import {UserCheckIcon , BellIcon ,ClockIcon , MessageSquareIcon} from 'lucide-react'
 import NoNotificationsFound from '../components/NoNotificationsFound'
 import toast from 'react-hot-toast'
+import GetLanguageFlag from '../components/GetLanguageFlag'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
  const NotificationPage = () => {
+  const navigator=useNavigate()
   const queryClient =useQueryClient()
 
   const {data:friendRequests ,isloading}=useQuery({
@@ -20,7 +24,9 @@ import toast from 'react-hot-toast'
       toast.success("Added Successfully!!")
     }
   })
-
+  useEffect(()=>{
+     navigator("/notification")
+  },[acceptFriendRequest])
   const incomingRequest=friendRequests?.incomingReqs || []
   const acceptedRequest=friendRequests?.acceptedReqs || []
   return (
@@ -43,8 +49,8 @@ import toast from 'react-hot-toast'
                 <span className='badge badge-primary ml-2'>{incomingRequest.length}</span>
               </h2>
               <div className='space-y-3'>
-                  {incomingRequest.map((request)=>(
-                    <div className='card bg-base-200 shadow-sm hover:shadow-md transition-shadow'>
+                  {incomingRequest.map((request,index)=>(
+                    <div key={index} j className='card bg-base-200 shadow-sm hover:shadow-md transition-shadow'>
                       <div className='card-body p-4'>
                          <div className='flex items-center justify-between'>
                           <div className='flex items-center gap-3'>
@@ -55,10 +61,10 @@ import toast from 'react-hot-toast'
                               <h3 className='font-semibold'>{request.sender.fullname}</h3>
                               <div className='flex flex-wrap gap-1.5 mt-1'>
                                 <span className='badge badge-secondary badge-sm'>
-                                  Native:{request.sender.nativelanguage}
+                                  {GetLanguageFlag(request.sender.nativelanguage)}Native: {request.sender.nativelanguage}
                                 </span>
-                                <span className='badge badge-outline badge-sm'>
-                                  Learning:{request.sender.learninglanguage}
+                                <span className='badge badge-outline badge-sm'>{GetLanguageFlag(request.sender.learninglanguage)}
+                                  Learning: {request.sender.learninglanguage}
                                 </span>
                               </div>
                             </div>
@@ -78,7 +84,7 @@ import toast from 'react-hot-toast'
            ) }
 
            {/* Accepted Request Notification  */}
-           {console.log(acceptedRequest)}
+
            {acceptedRequest.length >0 && (
             <section className='space-y-4'>
               <h2 className='text-xl font-semibold flex items-center gap-2'>
